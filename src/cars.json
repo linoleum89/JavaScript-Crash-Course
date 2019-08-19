@@ -1,0 +1,17 @@
+{
+    "cars": [{
+        "id": "afdgadafd",
+        "brand": "Ford",
+        "name": "Mustang",
+        "price": "220",
+        "color": "Yellow",
+        "image": ""
+    }, {
+        "id": "xbxkfhdjf",
+        "brand": "Mazda",
+        "name": "Mazda 3",
+        "price": "200",
+        "color": "Red",
+        "image": ""
+    }]
+}
