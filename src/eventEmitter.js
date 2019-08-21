@@ -8,7 +8,7 @@ class EventEmitter {
         }
     }
     off(eventName = '') {
-        if (this.events[eventName]) { 
+        if (this.events[eventName]) {
             delete this.events[eventName];
         }
     }

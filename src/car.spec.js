@@ -1,6 +1,6 @@
 import Car from './car';
 
-const runTests = function() {
+const runCarClassTests = function() {
     let pass = 0;
     let fail = 0;
     function assertThat(name, prop) {
@@ -30,4 +30,4 @@ const runTests = function() {
     console.warn(fail + " tests failed");
 }
 
-export default runTests;
+export default runCarClassTests;

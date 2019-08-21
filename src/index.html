@@ -1,27 +1,34 @@
 <!doctype html>
 <html>
+<meta charset="utf-8">
 
 <head>
     <title>Car Inventory</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         #overlay {
             display: none;
-            background: #000;
+            background: rgba(0, 0, 0, 0.5);
             position: fixed;
             width: 100%;
             height: 100%;
-            opacity: 0.3;
             z-index: 1;
         }
+
         #overlay h1 {
             color: white;
             text-align: center;
             position: absolute;
             top: 45%;
             left: 45%;
+            font-size: 50px;
         }
-        .card.mb-4 img {
+
+        .card.mb-4 .img {
+            background-size: cover;
             height: 225px;
+            width: 100%;
         }
 
         .card-body .text-muted {
@@ -83,48 +90,7 @@
 
         <div class="album py-5 bg-light">
             <div class="container">
-
-                <div class="row">
-
-                    <!-- <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://auto.ndtvimg.com/car-images/big/ford/mustang/ford-mustang.webp?v=32"
-                                alt="" />
-                            <div class="card-body">
-                                <h3>Ford</h3>
-                                <p class="card-text">Mustang</p>
-                                <p class="card-text">Yellow</p>
-                                <p class="card-text">$ 230.00</p>
-                                <div class="btn-group">
-                                    <button class="btn btn-primary">Edit</button>
-                                    <button class="btn btn-danger">Remove</button>
-                                </div>
-                                <small class="text-muted">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="https://www.mazda.mx/siteassets/mazda-mx/mycos-2019/mazda-3-sedan/vlp/versiones/mazda-3-sedan-vlp-versiones-i.jpg"
-                                alt="" />
-                            <div class="card-body">
-                                <h3>Mazda</h3>
-                                <p class="card-text">Mazda 3</p>
-                                <p class="card-text">Red</p>
-                                <p class="card-text">$ 210.00</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
+                <div class="row"></div>
             </div>
         </div>
 
@@ -147,7 +113,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Car</h5>
+                    <h5 class="modal-title">Add Car</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -155,12 +121,33 @@
                 <form>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Brand</label>
+                            <label for="brand">Brand</label>
                             <input type="text" class="form-control" id="brand" placeholder="Enter brand">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Name</label>
+                            <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="color">Color</label>
+                            <input type="text" class="form-control" id="color" placeholder="Enter color">
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" class="form-control" id="model" placeholder="Enter model">
+                        </div>
+                        <div class="form-group">
+                            <label for="engine">Engine</label>
+                            <input type="text" class="form-control" id="engine" placeholder="Enter engine">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image URL</label>
+                            <input type="text" class="form-control" id="image" placeholder="Enter image">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" maxlength="5" class="form-control" id="price"
+                                placeholder="Enter price">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -178,7 +165,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Car</h5>
+                    <h5 class="modal-title">Edit Car</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -186,12 +173,33 @@
                 <form>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Brand</label>
-                            <input type="text" class="form-control" id="brand" placeholder="Enter brand">
+                            <label for="brand-edit">Brand</label>
+                            <input type="text" class="form-control" id="brand-edit" placeholder="Enter brand">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name">
+                            <label for="name-edit">Name</label>
+                            <input type="text" class="form-control" id="name-edit" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="color-edit">Color</label>
+                            <input type="text" class="form-control" id="color-edit" placeholder="Enter color">
+                        </div>
+                        <div class="form-group">
+                            <label for="model-edit">Model</label>
+                            <input type="text" class="form-control" id="model-edit" placeholder="Enter model">
+                        </div>
+                        <div class="form-group">
+                            <label for="engine-edit">Engine</label>
+                            <input type="text" class="form-control" id="engine-edit" placeholder="Enter engine">
+                        </div>
+                        <div class="form-group">
+                            <label for="image-edit">Image URL</label>
+                            <input type="text" class="form-control" id="image-edit" placeholder="Enter image">
+                        </div>
+                        <div class="form-group">
+                            <label for="price-edit">Price</label>
+                            <input type="number" maxlength="5" class="form-control" id="price-edit"
+                                placeholder="Enter price">
                         </div>
                     </div>
                     <div class="modal-footer">

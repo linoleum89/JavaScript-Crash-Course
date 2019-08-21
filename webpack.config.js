@@ -4,7 +4,8 @@ module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist'
+        contentBase: './src',
+        port: 3000
     },
     entry: './src/index.js',
     output: {
