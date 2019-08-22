@@ -9,9 +9,8 @@ const actions = {
         //Simulate a GET request to the server
         //fetch('api/cars')
         return new Promise(function (resolve, reject) {
-            //setTimeout(function () {
-            resolve(jsonData);
-            //}, 1000);
+            resolve(jsonData); //simulate success GET
+            //reject(jsonData) //simulate fail GET, due to 400, 500 errors, etc.
         });
     },
     // POST Actions
@@ -27,6 +26,7 @@ const actions = {
         const cardBodyElement = document.createElement('div');
         const titleElement = document.createElement('h3');
         const nameElement = document.createElement('p');
+        const modelElement = document.createElement('p');
         const colorElement = document.createElement('p');
         const priceElement = document.createElement('p');
         const engineElement = document.createElement('small');
@@ -48,11 +48,13 @@ const actions = {
         //set properties of cardBody elements
         nameElement.className = 'card-text name';
         nameElement.innerHTML = name;
+        modelElement.className = 'card-text model';
+        modelElement.innerHTML = model;
         colorElement.className = 'card-text color';
         colorElement.innerHTML = color;
         priceElement.className = 'card-text price';
         priceElement.innerHTML = '$ ' + price;
-        engineElement.className = 'text-muted';
+        engineElement.className = 'text-muted engine';
         engineElement.innerHTML = engine;
 
         titleElement.innerHTML = brand;
@@ -69,6 +71,7 @@ const actions = {
         btnGroup.append(removeButton);
         cardBodyElement.append(titleElement);
         cardBodyElement.append(nameElement);
+        cardBodyElement.append(modelElement);
         cardBodyElement.append(colorElement);
         cardBodyElement.append(priceElement);
         cardBodyElement.append(btnGroup);
@@ -92,7 +95,8 @@ const actions = {
         });
     },
     //UPDATE Actions
-    editCarFormValues: function({brand, name, color, engine, model, price, image}) {
+    editCarFormValues: function({id, brand, name, color, engine, model, price, image}) {
+        document.getElementById('car-id').value = id;
         document.getElementById('brand-edit').value = brand;
         document.getElementById('name-edit').value = name;
         document.getElementById('color-edit').value = color;
@@ -100,6 +104,29 @@ const actions = {
         document.getElementById('model-edit').value = model;
         document.getElementById('price-edit').value = price;
         document.getElementById('image-edit').value = image;
+    },
+    updateCarCard: function(selectedCar) {
+        const {id, brand, name, color, engine, model, price, image} = selectedCar;
+        const editForm = document.querySelector("#editModal form");
+        const parentElement = document.getElementById(id);
+        const brandElement = parentElement.querySelector('h3');
+        const nameElement = parentElement.querySelector('.name');
+        const modelElement = parentElement.querySelector('.model');
+        const colorElement = parentElement.querySelector('.color');
+        const priceElement = parentElement.querySelector('.price');
+        const engineElement = parentElement.querySelector('.engine');
+        const imageElement = parentElement.querySelector('.img');
+
+        const editButton = parentElement.querySelector('.btn-primary');
+        const removeButton = parentElement.querySelector('.btn-danger');
+
+        brandElement.innerHTML = brand;
+        nameElement.innerHTML = name;
+        modelElement.innerHTML = model;
+        colorElement.innerHTML = color;
+        priceElement.innerHTML = '$ ' + price;
+        engineElement.innerHTML = engine;
+        imageElement.style.backgroundImage = `url(${image})`;
     }
 };
 

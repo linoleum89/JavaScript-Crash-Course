@@ -9,7 +9,7 @@ class Car {
             engine = "",
             model = "",
             color = "",
-            image = "https://via.placeholder.com/300",
+            image = "",
             price = 0
         } = props;
         this.id = id || uuidv1();
@@ -18,8 +18,8 @@ class Car {
         this.engine = engine;
         this.model = model;
         this.color = color;
-        this.image = image;
-        this.price = price || 0;
+        this.image = image !== '' ? image : "https://via.placeholder.com/300";
+        this.price = price || '$ ' + price;
     }
 
     on() {
