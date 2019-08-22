@@ -117,9 +117,6 @@ const actions = {
         const engineElement = parentElement.querySelector('.engine');
         const imageElement = parentElement.querySelector('.img');
 
-        const editButton = parentElement.querySelector('.btn-primary');
-        const removeButton = parentElement.querySelector('.btn-danger');
-
         brandElement.innerHTML = brand;
         nameElement.innerHTML = name;
         modelElement.innerHTML = model;
