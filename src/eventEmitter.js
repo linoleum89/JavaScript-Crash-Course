@@ -20,7 +20,31 @@ class EventEmitter {
     }
 }
 
-const eventEmitter = new EventEmitter();
-Object.freeze(eventEmitter);
+const Singleton = (function () {
+    let instance;
+ 
+    function createInstance() {
+        const eventEmitter = new EventEmitter();
+        Object.freeze(eventEmitter);
+        return eventEmitter;
+    }
+ 
+    return {
+        getInstance: function () {
+            if (!instance) {
+                instance = createInstance();
+            }
+            return instance;
+        }
+    };
+})();
+
+const eventEmitter = Singleton.getInstance();
+//const eventEmitter2 = Singleton.getInstance();
+
+//alert("Same instance? " + (eventEmitter === eventEmitter2));  
+
+//const eventEmitter = new EventEmitter();
+//Object.freeze(eventEmitter);
 
 export default eventEmitter;

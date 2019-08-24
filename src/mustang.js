@@ -3,7 +3,7 @@ import Car from './car';
 class Mustang extends Car {
     constructor(props) {
         super(props);
-        //Prefilled values for Mustand Type, we are only sending the model
+        //Prefilled values for Mustang Type, we are only sending the model
         this.name = 'Mustang';
         this.brand = 'Ford';
         this.engine = 'V8';
@@ -13,7 +13,7 @@ class Mustang extends Car {
         this.model = props.model;
     }
     runSuperFast() {
-        console.log('a normal car does not run super fast but this one does!');
+        console.log('a normal car does not run super fast but a '+this.name+' does!');
     }
 }
 
