@@ -57,6 +57,7 @@ const actions = {
         engineElement.className = 'text-muted engine';
         engineElement.innerHTML = engine;
 
+        titleElement.className = 'title';
         titleElement.innerHTML = brand;
 
         btnGroup.className = 'btn-group';
@@ -107,9 +108,8 @@ const actions = {
     },
     updateCarCard: function(selectedCar) {
         const {id, brand, name, color, engine, model, price, image} = selectedCar;
-        const editForm = document.querySelector("#editModal form");
         const parentElement = document.getElementById(id);
-        const brandElement = parentElement.querySelector('h3');
+        const brandElement = parentElement.querySelector('.title');
         const nameElement = parentElement.querySelector('.name');
         const modelElement = parentElement.querySelector('.model');
         const colorElement = parentElement.querySelector('.color');
