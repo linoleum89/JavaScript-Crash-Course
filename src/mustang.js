@@ -26,14 +26,15 @@ class Mustang extends Car {
             console.log(this, 'in arrow functions we can preserve the value of this');
         }
 
-        function callAndApply(args) {
+        function callAndApply(name, ...args) {
+            console.log(args);
             console.log(this, 'normal function, bind');
         }
     
         doSomethingElse();
         arrowFunction();
-        callAndApply.call(this);  //theFunction.call(valueForThis, arg1, arg2, ...)
-        callAndApply.apply(this); //theFunction.apply(valueForThis, arrayOfArgs)
+        callAndApply.call(this, this.name, this.brand, this.color);  //theFunction.call(valueForThis, arg1, arg2, ...)
+        callAndApply.apply(this, [this.name, this.brand]); //theFunction.apply(valueForThis, arrayOfArgs)
     }
 }
 
