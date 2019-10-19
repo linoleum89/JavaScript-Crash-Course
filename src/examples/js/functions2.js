@@ -20,8 +20,6 @@ const lettersWithoutSpaces = ['a ', 'b   ', 'c'].map(function(letter) {
     return letter.trim();
 });
 
-
-
 console.log(lettersWithoutSpaces); //['a', 'b', 'c']
 
 ['a ', 'b   ', 'c'].map(letter => letter.trim()); //['a', 'b', 'c'], same result 

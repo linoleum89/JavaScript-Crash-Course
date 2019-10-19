@@ -5,8 +5,6 @@ function myFunction() {
 
 myFunction(); //function invocation, this is bound to the global object or parent object
 
-
-
 let functionExpression = function() {
     console.log('this is a function expression');
 };
@@ -20,7 +18,7 @@ let car = {
     }
 };
 
-car.run();
+car.run(); //function as method
 
 //prefer the new constructor method for function objects creation that will serve as classes for your program
 function Teacher() {

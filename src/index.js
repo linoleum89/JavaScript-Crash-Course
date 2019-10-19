@@ -26,7 +26,7 @@ const APP = (function (Car) {
 		});
 
 		eventEmitter.on("createCar", newCar => {
-			console.info("create car!", newCar);
+			//console.info("create car!", newCar);
 			const { brand, name, model, color, engine, price, image } = newCar;
 			let car;
 
@@ -57,7 +57,7 @@ const APP = (function (Car) {
 					$("#createModal").modal("hide");
 				}, 1000);
 			} catch (err) {
-				console.error("Cannot create car: ", err);
+				//console.error("Cannot create car: ", err);
 				$("#createModal").modal("hide");
 			} finally {
 				//After completion we can do something here regardless of success or fail
@@ -67,7 +67,7 @@ const APP = (function (Car) {
 		});
 
 		eventEmitter.on("deleteCar", id => {
-			console.info("delete car!");
+			//console.info("delete car!");
 			try {
 				eventEmitter.emit('isLoading', true);
 				//Simulate a DELETE request to the server
@@ -78,19 +78,19 @@ const APP = (function (Car) {
 					if (index > -1) {
 						cars.splice(index, 1);
 					}
-					console.log(cars);
+					//console.log(cars);
 					document.getElementById(id).remove();
 					eventEmitter.emit('isLoading', false);
 				}, 1000);
 			} catch (err) {
-				console.error("Cannot delete car: ", err);
+				//console.error("Cannot delete car: ", err);
 			} finally {
 				//After completion we can do something here regardless of success or fail
 			}
 		});
 
 		eventEmitter.on("editCar", id => {
-			console.info("edit car!", id);
+			//console.info("edit car!", id);
 			const selectedCar = cars.find(car => car.id === id); // high order function
 			$("#editModal").modal("show");
 			actions.editCarFormValues(selectedCar);
@@ -98,7 +98,7 @@ const APP = (function (Car) {
 
 		createForm.addEventListener("submit", function (ev) {
 			ev.preventDefault();
-			console.info("submit event!");
+			//console.info("submit event!");
 			const brand = ev.target.querySelector("#brand").value;
 			const name = ev.target.querySelector("#name").value;
 			const color = ev.target.querySelector("#color").value;
@@ -125,7 +125,7 @@ const APP = (function (Car) {
 
 		editForm.addEventListener("submit", function (ev) {
 			ev.preventDefault();
-			console.info("submit event!");
+			//console.info("submit event!");
 			try {
 				eventEmitter.emit('isLoading', true);
 				//Simulate a PUT request to the server
@@ -156,7 +156,7 @@ const APP = (function (Car) {
 					$("#editModal").modal("hide");
 				}, 1000);
 			} catch (err) {
-				console.error("Cannot update car: ", err);
+				//console.error("Cannot update car: ", err);
 				$("#editModal").modal("hide");
 			} finally {
 				//After completion we can do something here regardless of success or fail
@@ -172,7 +172,7 @@ const APP = (function (Car) {
 		// });
 
 		actions.fetchData().then(response => {
-			console.log(response);
+			//console.log(response);
 			const cars = response.cars;
 			cars.forEach(car => {
 				eventEmitter.emit("createCar", car);
@@ -196,23 +196,25 @@ Object.freeze(APP);
 
 export default APP;
 
-console.log(APP.a);
+//console.log(APP.a);
 
 //APP.a = 'world';
 
-console.log(APP.a);
+//console.log(APP.a);
 
-console.log(APP.b.a);
+//console.log(APP.b.a);
 
 APP.b.a = "some value";
 
-console.log(APP.b.a);
+//console.log(APP.b.a);
 
-console.log(APP.cars);
+//console.log(APP.cars);
 
 window.onload = APP.init();
 window.APP = APP; //use this only for development purposes, never expose the main module of your app as public
 
 runCarClassTests();
 
-console.log(mustang);
+//console.log(mustang);
+
+console.clear();
