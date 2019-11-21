@@ -12,6 +12,10 @@ import eventEmitter from "./eventEmitter";
 import actions from "./actions";
 import runCarClassTests from "./car.spec";
 
+//Redux
+import store from "./store";
+import { addCar, isLoading } from "./actions/index.js";
+
 const APP = (function (Car) {
 	const cars = [];
 
@@ -32,6 +36,8 @@ const APP = (function (Car) {
 
 			try {
 				eventEmitter.emit('isLoading', true);
+				store.dispatch(isLoading(true));
+				console.log(store.getState());
 				//Simulate a POST request to the server
 				//fetch('api/cars')
 				setTimeout(() => {
@@ -53,7 +59,11 @@ const APP = (function (Car) {
 
 					cars.push(car);
 					actions.addCar(car);
+
+					store.dispatch(addCar(car));
+
 					eventEmitter.emit('isLoading', false);
+					store.dispatch(isLoading(false));
 					$("#createModal").modal("hide");
 				}, 1000);
 			} catch (err) {
@@ -70,6 +80,7 @@ const APP = (function (Car) {
 			//console.info("delete car!");
 			try {
 				eventEmitter.emit('isLoading', true);
+				store.dispatch(isLoading(true));
 				//Simulate a DELETE request to the server
 				//fetch('api/cars/id')
 				setTimeout(() => {
@@ -81,6 +92,7 @@ const APP = (function (Car) {
 					//console.log(cars);
 					document.getElementById(id).remove();
 					eventEmitter.emit('isLoading', false);
+					store.dispatch(isLoading(false));
 				}, 1000);
 			} catch (err) {
 				//console.error("Cannot delete car: ", err);
@@ -128,6 +140,7 @@ const APP = (function (Car) {
 			//console.info("submit event!");
 			try {
 				eventEmitter.emit('isLoading', true);
+				store.dispatch(isLoading(true));
 				//Simulate a PUT request to the server
 				//fetch('api/cars/id')
 				setTimeout(() => {
@@ -153,6 +166,7 @@ const APP = (function (Car) {
 					actions.updateCarCard(selectedCar);
 
 					eventEmitter.emit('isLoading', false);
+					store.dispatch(isLoading(false));
 					$("#editModal").modal("hide");
 				}, 1000);
 			} catch (err) {
@@ -218,3 +232,12 @@ runCarClassTests();
 //console.log(mustang);
 
 console.clear();
+
+window.store = store;
+window.addCar = addCar;
+
+console.log(store.getState());
+
+store.subscribe(() => console.log('Look ma, Redux!!'));
+
+console.log(store.getState());
